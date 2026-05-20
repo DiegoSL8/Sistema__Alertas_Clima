@@ -5,9 +5,10 @@
 package sistemaclima.observer;
 
 /**
- *
- * @author diego
+ * Interfaz para el patrón Observer.
+ * Todo dispositivo que quiera recibir alertas debe implementar esta interfaz.
  */
-public class Observador {
-    
+public interface Observador {
+    // Se ejecuta automáticamente cuando la estación detecta un cambio
+    void actualizar(double temperatura, double humedad);
 }

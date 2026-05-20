@@ -5,9 +5,10 @@
 package sistemaclima.factory;
 
 /**
- *
- * @author diego
+ * Interfaz base para el patrón Factory Method y Decorator.
+ * Define el comportamiento estándar de cualquier notificación.
  */
-public class Notificacion {
-    
+public interface Notificacion {
+    // Todos los tipos de notificación deben saber cómo enviarse
+    void enviar(String mensaje);
 }

@@ -5,9 +5,11 @@
 package sistemaclima.observer;
 
 /**
- *
- * @author diego
+ * Interfaz para el patrón Observer (El publicador).
+ * Obliga a la clase principal a tener un registro de quién la escucha.
  */
-public class Sujeto {
-    
+public interface Sujeto {
+    void registrarObservador(Observador o);
+    void eliminarObservador(Observador o);
+    void notificarObservadores();
 }
