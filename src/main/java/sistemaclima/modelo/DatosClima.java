@@ -5,9 +5,26 @@
 package sistemaclima.modelo;
 
 /**
- *
- * @author diego
+ * Clase modelo que representa la información del clima en un momento dado.
+ * Es una clase pura de datos (POJO).
  */
 public class DatosClima {
     
+    private double temperatura;
+    private double humedad;
+
+    // Constructor
+    public DatosClima(double temperatura, double humedad) {
+        this.temperatura = temperatura;
+        this.humedad = humedad;
+    }
+
+    // Getters para que otras clases puedan leer los datos si lo necesitan
+    public double getTemperatura() {
+        return temperatura;
+    }
+
+    public double getHumedad() {
+        return humedad;
+    }
 }
