@@ -24,7 +24,7 @@ public class DispositivoUsuario implements Observador {
      * Al crear un dispositivo, le decimos a quién pertenece 
      * y cómo prefiere ser notificado (SMS, Email, etc.)
      */
-    public class DispositivoUsuario(String nombrePropietario, Notificacion metodoNotificacion) {
+    public DispositivoUsuario(String nombrePropietario, Notificacion metodoNotificacion) {
         this.nombrePropietario = nombrePropietario;
         this.metodoNotificacion = metodoNotificacion;
     }
