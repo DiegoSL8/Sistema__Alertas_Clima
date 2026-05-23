@@ -5,6 +5,7 @@
 package sistemaclima.observer;
 
 import sistemaclima.factory.Notificacion;
+import sistemaclima.modelo.DatosClima;
 
 /**
  * Actúa como un "Observador" concreto.
@@ -12,7 +13,7 @@ import sistemaclima.factory.Notificacion;
  */
 
 
-//CLASE PENDIENTE DE FINALIZACION: A LA ESPERA DE NOTIFICACION 
+
 public class DispositivoUsuario implements Observador {
     
     private String nombrePropietario;
@@ -30,10 +31,10 @@ public class DispositivoUsuario implements Observador {
     }
 
     @Override
-    public void actualizar(double temperatura, double humedad) {
+    public void actualizar(DatosClima datos) {
         // 1. Armamos el texto del mensaje con los datos nuevos
         String mensaje = "Hola " + nombrePropietario + ". El clima actual es: " 
-                         + temperatura + "°C y " + humedad + "% de humedad.";
+                         + datos.getTemperatura() + "°C y " + datos.getHumedad() + "% de humedad.";
         
         // 2. Usamos el método de notificación para enviarlo
         metodoNotificacion.enviar(mensaje);

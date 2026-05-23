@@ -4,10 +4,13 @@
  */
 package sistemaclima;
 
-import sistemaclima.observer.*;
-import sistemaclima.factory.*;
-import sistemaclima.decorator.*;
-import sistemaclima.modelo.DatosClima;
+import sistemaclima.factory.Notificacion;
+import sistemaclima.factory.NotificacionFactory;
+import sistemaclima.observer.DispositivoUsuario;
+import sistemaclima.observer.EstacionMeteorologica;
+import sistemaclima.decorator.UrgenciaRojaDecorator;
+import sistemaclima.decorator.EncriptacionDecorator;
+
 /**
  *
  * @author diego
@@ -16,9 +19,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("---Sistema de alerta meteorologica---\n");
 
-        // Se instancia el observer
-        EstacionMeteorologica estacion = new EstacionMeteorologica();
-
+        // Se instancia el observer (sujeto)
+        EstacionMeteorologica estacionIquique = new EstacionMeteorologica(); //ver clima local
+        EstacionMeteorologica estacionDublin = new EstacionMeteorologica(); // ver clima dublin 
+        
+        //Factory para crear las notificaciones BASE
         // Se instancia el factory
         NotificacionFactory factory = new NotificacionFactory();
         
@@ -34,16 +39,18 @@ public class Main {
         // 4. Creamos los dispositivos y les asignamos su tipo de notificación
         DispositivoUsuario d1 = new DispositivoUsuario("Pueblerino", notiNormal);
         DispositivoUsuario d2 = new DispositivoUsuario("Presidente", notiUrgente);
-        DispositivoUsuario d3 = new DispositivoUsuario("Gobierno Irlandes", notiSecreta);
+        DispositivoUsuario d3 = new DispositivoUsuario("Gobierno Irlandes", notiSecreta);// El Gobierno se suscribe pero quire su clima obvio
 
         // 5. Acá se añaden a la estacion (Observer)
-        estacion.registrarObservador(d1);
-        estacion.registrarObservador(d2);
-        estacion.registrarObservador(d3);
+        estacionIquique.registrarObservador(d1); // 
+        estacionIquique.registrarObservador(d2);
+        estacionDublin.registrarObservador(d3); //como le creamos una torre para observar el clima de dublin, le añadimos su estacion necesaria
 
         // 6. Lo que veremos:
         System.out.println("\n>>> OCURRIO UN CAMBIO CLIMATICO -- TODOS BAJO TECHO <<<");
-        DatosClima tormenta = new DatosClima(15.0, 95.0); // Acá le damos los valores del la humedad y de la temperatura.
-        estacion.setCondiciones(15.0, 95.0);
-    }
-}
+        // Esto solo le enviará la alerta a d1 Y d2(CLIMA LOCAL)
+        estacionIquique.setCondiciones(28.5, 40.0); 
+
+        // Esto solo le enviará la alerta encriptada a d3 (CLIMA DUBLIN)
+        estacionDublin.setCondiciones(5.0, 95.0);    }
+        }
