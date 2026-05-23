@@ -4,10 +4,26 @@
  */
 package sistemaclima.decorator;
 
+import sistemaclima.factory.Notificacion;
+
+
 /**
  *
  * @author diego
  */
-public class NotificacionDecorator {
+
+//Guarda una notificación generica que van a usar el resto de clases en este package
+public abstract class NotificacionDecorator implements Notificacion {
     
+    protected Notificacion notificacion_Decorator;
+
+    public NotificacionDecorator(Notificacion notificacion) {
+        this.notificacion_Decorator = notificacion;
+    }
+
+    @Override
+    public void enviar(String mensaje) {
+        //Acá no hace nada, solo lo guarda
+        notificacion_Decorator.enviar(mensaje);
+    }
 }

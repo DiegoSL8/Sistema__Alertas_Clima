@@ -13,6 +13,6 @@ public class NotificacionEmail implements Notificacion {
     @Override
     public void enviar(String mensaje) {
         // Lógica básica para simular el envío de un Email
-        System.out.println("[EMAIL] Enviando alerta meteorológica: " + mensaje);
+        System.out.println("[EMAIL] Enviando alerta meteorologica: " + mensaje);
     }
 }
